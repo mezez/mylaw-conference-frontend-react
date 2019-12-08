@@ -150,7 +150,7 @@ class App extends Component {
     }
 
     updateTalksAferDelete = (talks) => {
-        this.setState({ talks: talks, attendee: { name: "", email: "" } });
+        this.setState({ talks: talks });
     }
 
     addTalk = (talk) => {
