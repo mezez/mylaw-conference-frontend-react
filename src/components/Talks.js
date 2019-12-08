@@ -2,7 +2,9 @@ import React, { Component, useState } from 'react'
 import { Button } from 'reactstrap'
 import styled from 'styled-components';
 import TalkAttendees from './TalkAttendees';
+import AttendeeModal from './AttendeeModal';
 import PropTypes from 'prop-types';
+import { thisExpression } from '@babel/types';
 
 export default class Talks extends Component {
 
@@ -20,6 +22,7 @@ export default class Talks extends Component {
     styledDiv = styled.div`
         margin-top:2rem;
         margin-bottom:1rem;
+        width: 98%;
         margin-left:1rem;
         border: 1px solid grey;
         padding: 10px;
@@ -27,18 +30,13 @@ export default class Talks extends Component {
     `;
 
     attDiv = styled.div`
-    position: fixed;
-    opacity:1;
-	top: 1;
-	overflow: hidden;
-    z-index: 1000;
-    background-color:white;
-    margin-left:36%;
-    margin-top:2rem;
-    border: 1px solid grey;
-    padding: 10px;
-    box-shadow: 2px 2px 5px 4px #888888;
+    padding:1rem;
+
+    .styledButton {
+        margin-left: 1rem;
+    }
     `;
+
 
     setAttendees = () => {
 
@@ -46,6 +44,10 @@ export default class Talks extends Component {
             //display attendee component
             <TalkAttendees attendees={this.state.attendees} />
         );
+    }
+
+    setData = (data) => {
+        this.setState(data);
     }
 
     removeTalk = (index, talkId) => {
@@ -86,26 +88,28 @@ export default class Talks extends Component {
             <div className='row'>
 
                 <>
-                    <this.styledDiv className='col-lg-4 col'>
+                    <this.styledDiv>
                         {
                             this.props.talks.map((talk, index) => {
                                 if (talk) {
                                     const { attendees } = talk;
+                                    const data = { talk: talk.title, attendees: attendees };
                                     return (
                                         <>
-                                            <h4>{talk.title}</h4> <Button outline color="primary" onClick={
-                                                () => {
-                                                    this.setState({ talk: talk.title, attendees: attendees });
+                                            <h4>{talk.title}</h4>
+                                            <this.attDiv className='row'>
 
-                                                }
-                                            }>View Attendees</Button>{' '}
-                                            <Button outline color="danger" onClick={
-                                                () => {
+                                                {
+                                                    <AttendeeModal data={data} getState={this.state} modalTitle={`${talk.title} Attendees`} buttonLabel={"View Attendees"} setData={this.setData} />
+                                                }*
+                                                <Button outline color="danger" onClick={
+                                                    () => {
 
-                                                    this.removeTalk(index, talk._id);
+                                                        this.removeTalk(index, talk._id);
 
-                                                }
-                                            }>Remove</Button>
+                                                    }
+                                                }>Remove</Button>
+                                            </this.attDiv>
                                             <hr />
                                         </>
                                     )
@@ -115,30 +119,7 @@ export default class Talks extends Component {
                             })
                         }
                     </this.styledDiv >
-                    <this.attDiv className=' col-lg-6'>
-                        <>
-                            <h4>Attendees</h4><br />
-                            <p>Talk: {this.state.talk}</p><hr />
-                            {
-                                this.state.attendees.map(attendee => {
-                                    if (attendee.name) {
-                                        return <>
 
-                                            <div className='row'>
-                                                <p className='col-lg-5'>Name: {attendee.name}</p>
-                                                <p className='col-offset-1 col-lg-5'>Email: {attendee.email}</p>
-                                            </div>
-                                            <hr />
-
-                                        </>
-                                    } else {
-                                        return <p>No Attendees Available</p>
-                                    }
-
-                                })}
-                        </>
-
-                    </this.attDiv>
                 </>
 
             </div>

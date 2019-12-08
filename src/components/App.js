@@ -164,7 +164,7 @@ class App extends Component {
     modalDiv = styled.div`
         margin-top:5rem;
         margin-left:0rem;
-        width:98%;
+        width:100%;
         
         padding: 10px;
         box-shadow: 2px 2px 5px 4px #888888;
