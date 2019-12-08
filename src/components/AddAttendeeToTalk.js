@@ -18,28 +18,36 @@ export default class AddAttendeeToTalk extends Component {
         this.setState({ talkId: talkId, attendeeId: attendeeId });
     }
 
-    saveAttendeeToTalk = (attendeeId, talkId) => {
+    saveAttendeeToTalk = () => {
         //save talk
-
-        fetch(`https://mylaw-conference.herokuapp.com/add-to-talk/${this.state.attendeeId}/${this.state.talkId}`, {
-            method: 'POST'
-        }).then(res => {
-            this.setState({ attendeeId: '', talkId: '' });
-
-            if (res.status !== 201) {
-                throw Error('Could not add attendee to talk');
+        try {
+            if ((this.state.attendeeId === "") || (this.state.talkId === "")) {
+                throw Error("Attendee and talk IDs are requird");
             }
-            return res.json();
 
-        }).then(resData => {
-            //console.log(resData);
-            alert('Attendee has been added to talk');
-        }).catch(err => {
-            console.log(err);
-            alert('Error Occurred while adding attendee to talk. Please try again');
 
-        });
-    }
+            fetch(`https://mylaw-conference.herokuapp.com/add-to-talk/${this.state.attendeeId}/${this.state.talkId}`, {
+                method: 'POST'
+            }).then(res => {
+                this.setState({ attendeeId: '', talkId: '' });
+
+                if (res.status !== 201) {
+                    throw Error('Could not add attendee to talk');
+                }
+                return res.json();
+
+            }).then(resData => {
+                //console.log(resData);
+                alert('Attendee has been added to talk');
+            }).catch(err => {
+                console.log(err);
+                alert('Error Occurred while adding attendee to talk. Please try again');
+
+            });
+        } catch (err) {
+            alert("You must select a talk to add attendee to");
+        }
+    };
 
     getTalks = () => {
         const url = "https://mylaw-conference.herokuapp.com/talks"

@@ -94,7 +94,7 @@ class App extends Component {
     saveAttendee = () => {
         try {
             //save attendee
-            if (this.state.attendee.name === "" || this.state.attendee.email === "") {
+            if ((this.state.attendee.name === "") || (this.state.attendee.email === "")) {
                 throw Error("Name and Email Cannot be Empty");
             }
 
