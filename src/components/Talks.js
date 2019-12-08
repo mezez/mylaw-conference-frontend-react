@@ -19,6 +19,7 @@ export default class Talks extends Component {
 
     styledDiv = styled.div`
         margin-top:2rem;
+        margin-bottom:1rem;
         margin-left:1rem;
         border: 1px solid grey;
         padding: 10px;
