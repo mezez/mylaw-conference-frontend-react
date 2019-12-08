@@ -75,8 +75,6 @@ class App extends Component {
             return res.json();
 
         }).then(resData => {
-            //console.log(resData);
-            alert('Talk Saved Successfully');
             this.addTalk(resData.talk);
         }).catch(err => {
             console.log(err);
@@ -142,7 +140,8 @@ class App extends Component {
     }
 
     addTalk = (talk) => {
-        const updatedTalks = [...this.state.talks, talk]
+        const updatedTalks = [...this.state.talks];
+        updatedTalks.unshift(talk);
         this.setState({
             talks: updatedTalks
         });
