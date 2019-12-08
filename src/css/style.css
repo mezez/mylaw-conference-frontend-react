@@ -1,0 +1,70 @@
+.header {
+	background-image: url("https://image.freepik.com/free-vector/red-paper-airplane-fly-dark-blue-background_44481-304.jpg");
+	/* background: #7f7f90; */
+	width: 90%;
+	height: 20rem;
+	font-size: xx-large;
+	margin: 5%;
+}
+
+.below-header {
+	width: 90%;
+	margin-bottom: 2%;
+
+}
+
+.below-header p {
+	text-align: center;
+	font-size: xx-large;
+
+}
+
+.below-header h3 {
+	text-align: center;
+	font-size: xx-large;
+
+	color: red;
+
+}
+
+.me {
+	border-radius: 50%;
+	width: 15rem;
+	height: 20rem;
+	font-size: xx-large;
+	margin-top: 1%;
+	padding-bottom: 5%;
+}
+
+.full-card .closure {
+	padding: 7rem;
+}
+
+.closure {
+	padding-left: 1rem;
+	padding-top: 1rem;
+}
+
+.spc {
+	margin-top: 4%;
+	margin-bottom: 4%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.social {
+	margin-left: 20%;
+	align-content: center;
+}
+
+.lk :hover {
+	cursor: pointer;
+}
+
+.nv {
+	position: fixed;
+	top: 0;
+	overflow: hidden;
+	z-index: 1000;
+	width: 100%;
+}
