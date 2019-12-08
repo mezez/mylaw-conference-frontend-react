@@ -92,13 +92,13 @@ export default class Talks extends Component {
                                     const { attendees } = talk;
                                     return (
                                         <>
-                                            <h2>{talk.title}</h2> <Button className='btn btn-secondary' onClick={
+                                            <h4>{talk.title}</h4> <Button outline color="primary" onClick={
                                                 () => {
                                                     this.setState({ talk: talk.title, attendees: attendees });
 
                                                 }
                                             }>View Attendees</Button>{' '}
-                                            <Button className='btn btn-danger' onClick={
+                                            <Button outline color="danger" onClick={
                                                 () => {
 
                                                     this.removeTalk(index, talk._id);
@@ -116,7 +116,7 @@ export default class Talks extends Component {
                     </this.styledDiv >
                     <this.attDiv className=' col-lg-6'>
                         <>
-                            <h3>Attendees</h3><br />
+                            <h4>Attendees</h4><br />
                             <p>Talk: {this.state.talk}</p><hr />
                             {
                                 this.state.attendees.map(attendee => {
