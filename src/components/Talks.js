@@ -68,6 +68,7 @@ export default class Talks extends Component {
             return res.json();
 
         }).then(resData => {
+            this.setState({ talk: "" });
             const talks = this.props.talks;
             //const arrIndex = (talks.length - 1) - index;
             talks.splice(index, 1);
