@@ -149,8 +149,8 @@ class App extends Component {
 
     modalDiv = styled.div`
         margin-top:3rem;
-        margin-left:3rem;
-        width:90%;
+        margin-left:0rem;
+        width:98%;
         border-radius: 5%;
         
         padding: 10px;
@@ -174,10 +174,14 @@ class App extends Component {
         });
     }
 
+    styledContainer = styled.div`
+        width:90%;
+    `;
+
 
     render() {
         return (
-            <div className='container-fluid'>
+            <this.styledContainer className='container-fluid'>
                 <div className='row' ref={this.homeRef}><Header history={this.props.history} brand={this.state.config.brand} scrollToRef={this.scrollToRef} /></div>
                 <br />
                 <this.modalDiv className='row'>
@@ -186,7 +190,7 @@ class App extends Component {
                 </this.modalDiv>
 
                 <Talks updateTalksAferDelete={this.updateTalksAferDelete} talks={this.state.talks} />
-            </div>
+            </this.styledContainer>
         );
     }
 }

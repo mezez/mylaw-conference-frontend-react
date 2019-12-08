@@ -19,7 +19,7 @@ export default class Talks extends Component {
 
     styledDiv = styled.div`
         margin-top:3rem;
-        margin-left:3rem;
+        margin-left:0rem;
         border-radius: 5%;
         border: 1px solid grey;
         padding: 10px;
@@ -33,7 +33,7 @@ export default class Talks extends Component {
 	overflow: hidden;
     z-index: 1000;
     background-color:white;
-    margin-left:40%;
+    margin-left:36%;
     margin-top:3rem;
     border: 1px solid grey;
     padding: 10px;
@@ -116,7 +116,7 @@ export default class Talks extends Component {
                     </this.styledDiv >
                     <this.attDiv className=' col-lg-6'>
                         <>
-                            <h3>Attendees List</h3><br />
+                            <h3>Attendees</h3><br />
                             <p>Talk: {this.state.talk}</p><hr />
                             {
                                 this.state.attendees.map(attendee => {

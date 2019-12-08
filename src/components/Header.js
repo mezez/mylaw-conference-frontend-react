@@ -50,17 +50,6 @@ const Header = (props) => {
                     </Collapse>
                 </Navbar>
             </div>
-            {/* <div className='header'>
-                <div className='below-header'>
-                    <br />
-                    <h3>Welcome,    Get comfortable!</h3>
-                    <div className='me row  col-xs-12'>
-                        <img className="img me img-responsive" src={`/images/${props.imgName}`} />
-                    </div>
-
-                </div>
-            </div> */}
-
         </>
     );
 }
