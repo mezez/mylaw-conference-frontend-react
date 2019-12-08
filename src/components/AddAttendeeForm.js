@@ -25,11 +25,11 @@ class AddAttendeeForm extends Component {
             <>
                 <FormGroup>
                     <Label for="title">Name</Label>
-                    <Input type="text" name="name" id="name" ref={this.nameRef} value={this.props.value.name} onChange={this.handleChange} placeholder="Full name" />
+                    <Input type="text" required name="name" id="name" ref={this.nameRef} value={this.props.value.name} onChange={this.handleChange} placeholder="Full name" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="title">Email</Label>
-                    <Input type="email" name="email" id="name" ref={this.emailRef} value={this.props.value.email} onChange={this.handleChange} placeholder="Email address" />
+                    <Input type="email" required name="email" id="name" ref={this.emailRef} value={this.props.value.email} onChange={this.handleChange} placeholder="Email address" />
                 </FormGroup>
             </>
 

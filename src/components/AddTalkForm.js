@@ -21,7 +21,7 @@ class AddTalkForm extends Component {
 
             <FormGroup>
                 <Label for="title">Title</Label>
-                <Input type="text" name="title" id="title" ref={this.titleRef} value={this.props.value.title} onChange={this.handleChange} placeholder="Talk Title" />
+                <Input type="text" required name="title" id="title" ref={this.titleRef} value={this.props.value.title} onChange={this.handleChange} placeholder="Talk Title" />
             </FormGroup>
 
         );

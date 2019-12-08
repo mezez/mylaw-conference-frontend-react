@@ -56,64 +56,78 @@ class App extends Component {
     }
 
     saveTalk = () => {
-        //save talk
-
-        fetch('https://mylaw-conference.herokuapp.com/talk', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: this.state.talk.title
-            })
-        }).then(res => {
-            this.setState({ talk: { title: '' } });
-
-            if (res.status !== 201) {
-                throw Error('Could not save talk');
+        try {
+            //save talk
+            if (this.state.talk.title === "") {
+                throw Error("Title Cannot be Empty");
             }
-            return res.json();
 
-        }).then(resData => {
-            this.addTalk(resData.talk);
-        }).catch(err => {
-            console.log(err);
-            alert('Error Occurred while trying to save talk. Please try again');
+            fetch('https://mylaw-conference.herokuapp.com/talk', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: this.state.talk.title
+                })
+            }).then(res => {
+                this.setState({ talk: { title: '' } });
 
-        });
-    }
+                if (res.status !== 201) {
+                    throw Error('Could not save talk');
+                }
+                return res.json();
+
+            }).then(resData => {
+                this.addTalk(resData.talk);
+            }).catch(err => {
+                console.log(err);
+                alert('Error Occurred while trying to save talk. Please try again');
+
+            });
+        } catch (err) {
+            alert("Title Cannot be empty");
+        }
+    };
 
 
     saveAttendee = () => {
-        //save attendee
-
-        fetch('https://mylaw-conference.herokuapp.com/attendee', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: this.state.attendee.name,
-                email: this.state.attendee.email,
-            })
-        }).then(res => {
-            this.setState({ attendee: { name: '', email: '' } });
-
-            if (res.status !== 201) {
-                throw Error('Could not save attendee');
+        try {
+            //save attendee
+            if (this.state.attendee.name === "" || this.state.attendee.email === "") {
+                throw Error("Name and Email Cannot be Empty");
             }
-            return res.json();
 
-        }).then(resData => {
-            //console.log(resData);
-            alert('Attendee Saved Successfully');
+            fetch('https://mylaw-conference.herokuapp.com/attendee', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: this.state.attendee.name,
+                    email: this.state.attendee.email,
+                })
+            }).then(res => {
+                this.setState({ attendee: { name: '', email: '' } });
 
-        }).catch(err => {
-            alert('An error occurred while saving attendee. Please try again');
-            console.log(err);
+                if (res.status !== 201) {
+                    throw Error('Could not save attendee');
+                }
+                return res.json();
 
-        });
-    }
+            }).then(resData => {
+                //console.log(resData);
+                alert('Attendee Saved Successfully');
+
+            }).catch(err => {
+                alert('An error occurred while saving attendee. Please try again');
+                console.log(err);
+
+            });
+        } catch (err) {
+            alert("Name and Email are required");
+        }
+    };
 
     getTalks = () => {
         const url = "https://mylaw-conference.herokuapp.com/talks"
