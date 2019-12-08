@@ -137,6 +137,10 @@ class App extends Component {
         });
     }
 
+    updateTalksAferDelete = (talks) => {
+        this.setState({ talks: talks });
+    }
+
     addTalk = (talk) => {
         const updatedTalks = [...this.state.talks, talk]
         this.setState({
@@ -182,7 +186,7 @@ class App extends Component {
                     <AddModal form={<AddAttendeeForm set={this.updateAttendee} value={this.state.attendee} />} modalTitle={"Add Attendee"} buttonLabel={"Add Attendee"} save={this.saveAttendee} />
                 </this.modalDiv>
 
-                <Talks talks={this.state.talks} />
+                <Talks updateTalksAferDelete={this.updateTalksAferDelete} talks={this.state.talks} />
             </div>
         );
     }

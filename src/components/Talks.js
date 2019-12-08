@@ -49,6 +49,7 @@ export default class Talks extends Component {
     }
 
     removeTalk = (index, talkId) => {
+
         const url = 'https://mylaw-conference.herokuapp.com/delete-talk/' + talkId;
         console.log(url);
 
@@ -67,11 +68,11 @@ export default class Talks extends Component {
             return res.json();
 
         }).then(resData => {
-            const talks = [...this.state.talks, resData.talk]
+            const talks = this.props.talks;
+            //const arrIndex = (talks.length - 1) - index;
             talks.splice(index, 1);
-            this.setState({
-                talks: talks
-            });
+            this.props.updateTalksAferDelete(talks);
+
         }).catch(err => {
             alert('An error occurred while deleting talk');
             console.log(err);
@@ -94,7 +95,6 @@ export default class Talks extends Component {
                                             <h2>{talk.title}</h2> <Button className='btn btn-secondary' onClick={
                                                 () => {
                                                     this.setState({ talk: talk.title, attendees: attendees });
-                                                    console.log(this.state.attendees);
 
                                                 }
                                             }>View Attendees</Button>{' '}
