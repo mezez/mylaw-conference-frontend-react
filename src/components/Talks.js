@@ -18,9 +18,8 @@ export default class Talks extends Component {
     }
 
     styledDiv = styled.div`
-        margin-top:3rem;
-        margin-left:0rem;
-        border-radius: 5%;
+        margin-top:2rem;
+        margin-left:1rem;
         border: 1px solid grey;
         padding: 10px;
         box-shadow: 2px 2px 5px 4px #888888;
@@ -34,7 +33,7 @@ export default class Talks extends Component {
     z-index: 1000;
     background-color:white;
     margin-left:36%;
-    margin-top:3rem;
+    margin-top:2rem;
     border: 1px solid grey;
     padding: 10px;
     box-shadow: 2px 2px 5px 4px #888888;
