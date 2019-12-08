@@ -106,13 +106,16 @@ export default class AddAttendeeToTalk extends Component {
                 <this.styledForm>
                     {
                         this.state.attendees.map((attendee, attendeeIndex) => {
-                            return <div className='row'>
+                            return <> <div className='row'>
                                 <div className='col-lg-3'><p>Name: {attendee.name}</p></div>
                                 <div className='col-offset-1 col-lg-8'>
                                     <AddModal modalTitle={`Add ${attendee.name} to talk`} save={this.saveAttendeeToTalk} buttonLabel={`Add ${attendee.name} to talk`} form={<AddToTalkForm attendeeId={attendee._id} setTalkInfo={this.setTalkInfo} talks={this.state.talks} />} />
                                 </div>
-                                <hr />
+
                             </div>
+                                <hr />
+                            </>
+
                         })
                     }
 

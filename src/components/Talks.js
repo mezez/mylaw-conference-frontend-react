@@ -116,16 +116,18 @@ export default class Talks extends Component {
                     </this.styledDiv >
                     <this.attDiv className=' col-lg-6'>
                         <>
-                            <h3>Attendees List</h3>
+                            <h3>Attendees List</h3><br />
+                            <p>Talk: {this.state.talk}</p><hr />
                             {
                                 this.state.attendees.map(attendee => {
                                     if (attendee.name) {
                                         return <>
-                                            <p>Talk: {this.state.talk}</p>
+
                                             <div className='row'>
                                                 <p className='col-lg-5'>Name: {attendee.name}</p>
                                                 <p className='col-offset-1 col-lg-5'>Email: {attendee.email}</p>
                                             </div>
+                                            <hr />
 
                                         </>
                                     } else {
