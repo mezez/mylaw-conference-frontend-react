@@ -95,13 +95,20 @@ export default class AddAttendeeToTalk extends Component {
 
     styledForm = styled.div`
         margin: 5%;
+        @media (max-width: 1300px){
+        margin-top: 15%;
+    }
     `;
+    styledDiv = styled.div`
+        margin-left: 5%;
+    `;
+
 
 
     render() {
         return (
             <>
-                <div className='row' ref={this.homeRef}><Header history={this.props.history} brand={'Mylaw Conference'} /></div>
+                <this.styledDiv className='row' ref={this.homeRef}><Header history={this.props.history} brand={'Mylaw Conference'} /></this.styledDiv>
                 <br />
                 <this.styledForm>
                     {
